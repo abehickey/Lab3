@@ -3,4 +3,4 @@ class Disk:
         self.size = size
 
     def __str__(self):
-        return "Disk: size = " + self.size
+        return str(self.size)

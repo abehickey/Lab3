@@ -6,10 +6,7 @@ class TowersOfHanoi:
     def __init__(self, num_disks):
         self.num_of_disks = num_disks
         self.num_of_moves = 0
-        # self.A = tower.Tower('A')
-        # self.B = tower.Tower('B')
-        # self.C = tower.Tower('C')
-        self.towers = [self.tower.Tower('A'), self.tower.Tower('B'), self.tower.Tower('C')]
+        self.towers = [tower.Tower('A'), tower.Tower('B'), tower.Tower('C')]
         for i in range(num_disks, 0, -1):
             self.towers[0].append(disk.Disk(i))
 
@@ -19,10 +16,10 @@ class TowersOfHanoi:
     def move_disks(self, num_disks_to_move, source, helper, target):
         n = num_disks_to_move
         if n == 1:
-            # The following code is performed in the
-            # Tower move method in your Tower class
-            target.append(source.pop())
-            # Display the towers here
+            source.move(target)
+            # Display the towers if starting with 4 disks.
+            if self.num_of_disks == 4:
+                self.display_towers()
             # Increment the count of moves at this location
             self.num_of_moves += 1
         else:
@@ -37,4 +34,5 @@ class TowersOfHanoi:
         self.move_disks(len(self.towers[0]), self.towers[0], self.towers[1], self.towers[2])
 
     def display_towers(self):
-        pass
+        print('Towers:\n{}\n{}\n{}\n'
+              .format(self.towers[0], self.towers[1], self.towers[2]))
